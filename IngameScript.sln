@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33214.272
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandLineActions", "CommandLineActions.csproj", "{133C9D5F-AF67-4F39-A8A1-DB41DD740D73}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{133C9D5F-AF67-4F39-A8A1-DB41DD740D73}.Debug|x64.ActiveCfg = Debug|x64
+		{133C9D5F-AF67-4F39-A8A1-DB41DD740D73}.Debug|x64.Build.0 = Debug|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4CF01540-AF0F-44A9-ACA8-B83464A93688}
+	EndGlobalSection
+EndGlobal
