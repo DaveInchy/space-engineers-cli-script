@@ -21,6 +21,7 @@ namespace IngameScript.MDK
 
             // Create and configure the desired program.
             var program = MDKFactory.CreateProgram<Program>();
+            
             MDKFactory.Run(program);
         }
     }

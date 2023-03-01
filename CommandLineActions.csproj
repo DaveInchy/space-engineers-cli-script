@@ -61,8 +61,11 @@
     <AdditionalFiles Include="README.md">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </AdditionalFiles>
-    <AdditionalFiles Include="LICENSE.md">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	<AdditionalFiles Include="CHANGES.md">
+		<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	</AdditionalFiles>
+	<AdditionalFiles Include="LICENSE.md">
+		<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </AdditionalFiles>
     <AdditionalFiles Include="thumb.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -73,7 +76,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="CommandLineActions.ruleset" />
-    <None Include="CHANGES.MD" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="AfterBuild">

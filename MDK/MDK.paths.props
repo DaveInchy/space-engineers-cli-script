@@ -1,10 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <!-- 
-    You can safely exclude this file from code repositories and use different 
-    user settings per machine.
-    -->
     <MDKVersion>1.4.12</MDKVersion>
     <MDKUseGameBinPath>no</MDKUseGameBinPath>
     <MDKGameBinPath>B:\SteamLibrary\SteamApps\common\SpaceEngineers\Bin64</MDKGameBinPath>
