@@ -61,11 +61,11 @@
     <AdditionalFiles Include="README.md">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </AdditionalFiles>
-	<AdditionalFiles Include="CHANGES.md">
-		<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	</AdditionalFiles>
-	<AdditionalFiles Include="LICENSE.md">
-		<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <AdditionalFiles Include="CHANGES.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AdditionalFiles>
+    <AdditionalFiles Include="LICENSE.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </AdditionalFiles>
     <AdditionalFiles Include="thumb.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

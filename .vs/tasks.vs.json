@@ -3,7 +3,7 @@
   "tasks": [
     {
       "taskLabel": "CLA Script",
-      "appliesTo": "src\CommandLineActions.cs",
+      "appliesTo": "src/CommandLineActions.cs",
       "type": "msbuild"
     },
     {
