@@ -18,7 +18,7 @@ using VRage.Game.ModAPI.Ingame.Utilities;
 using VRage.Game.ObjectBuilders.Definitions;
 using VRageMath;
 
-namespace IngameScript
+namespace CommandLineActions
 {
 
     partial class Program : MyGridProgram
@@ -89,8 +89,8 @@ namespace IngameScript
                     Action init;
 
                     // Register command execution methods
-                    Commands["help"] = Help;
-                    Commands["lcd"] = LCD;
+                    Commands["/help"] = Help;
+                    Commands["/lcd"] = LCD;
 
                     if (CommandLine.TryParse(argument))
                     {
@@ -127,7 +127,15 @@ namespace IngameScript
 
         private void Help()
         {
-            Echo($"[CommandLineActions]\n• Num. of Arguments: {args.Count()}");
+            Echo($"[CommandLineActions] use command '/help [<subcommand>]' to get help for a specific command."
+                + $"\n"
+                + $"\n Commands:"
+                + $"\n /help\t  \t  \rGet help for each command or in general."
+                + $"\n /lcd\t   \t  \rChange LCD states, Using pre-programmed sprites and text / info."
+                + $"\n"
+                + $"\n ----------------------------------"
+                + $"\n Arguments Count: {args.Count()}"
+            );
         }
 
         public void InitBlocks()
@@ -136,7 +144,7 @@ namespace IngameScript
             {
                 GridTerminalSystem.GetBlocksOfType<IMySensorBlock>(Blocks.Sensors, Sensor => Sensor.Enabled == true);
                 GridTerminalSystem.GetBlocksOfType<IMyTimerBlock>(Blocks.Timers, Timer => Timer.Enabled == true);
-                GridTerminalSystem.GetBlocksOfType<IMyTextPanel>(Blocks.LCDs, LCD => LCD.IsFunctional == true);
+                GridTerminalSystem.GetBlocksOfType<IMyTextPanel>(Blocks.LCDs, LCD => LCD != null);
             }
             catch (System.Exception e)
             {
@@ -151,9 +159,14 @@ namespace IngameScript
             switch(args[1])
             {
 
-                case "set":
+                case "show":
                     string blockName = args[2];
+                    
                     if (blockName == null) break;
+
+                    IMyTextPanel panel = (IMyTextPanel)GridTerminalSystem.GetBlockWithName(blockName);
+                    Blocks.LCDs.Add(LcdShow(panel));
+
                     break;
 
                 case "toggle":
@@ -165,12 +178,12 @@ namespace IngameScript
                     if (pos == null) break;
                     if (neg == null) break;
 
-                    IMyTextPanel panel = (IMyTextPanel)GridTerminalSystem.GetBlockWithName(block);
-                    Blocks.LCDs.AddOrInsert(lcdToggle(panel, pos, neg), 0);
+                    IMyTextPanel panel2 = (IMyTextPanel)GridTerminalSystem.GetBlockWithName(block);
+                    Blocks.LCDs.Add(lcdToggle(panel2, pos, neg));
                     break;
 
                 default:
-                    Echo($"LCD SET {args[1]} TO: {args[2]}");
+                    Echo($"Use '/help lcd' to learn more about this command.");
                     break;
             }
             return;
@@ -178,7 +191,6 @@ namespace IngameScript
 
         private IMyTextPanel lcdToggle(IMyTextPanel panel, string positive, string negative)
         {
-
             panel.SetValue<long>("Font", 1147350002);
 
             panel.FontSize = 3;
@@ -203,6 +215,13 @@ namespace IngameScript
                 );
             }
 
+            return panel;
+        }
+
+        private IMyTextPanel LcdShow(IMyTextPanel panel)
+        {
+            UnicodeImage Image = new UnicodeImage(panel);
+            
             return panel;
         }
 

@@ -1,0 +1,3 @@
+C:\Users\dave\AppData\Roaming\SpaceEngineers\IngameScripts\local\CommandLineActions\obj\x64\Debug\CommandLineActions.csproj.AssemblyReference.cache
+C:\Users\dave\AppData\Roaming\SpaceEngineers\IngameScripts\local\CommandLineActions\obj\x64\Debug\CommandLineActions.exe.config
+C:\Users\dave\AppData\Roaming\SpaceEngineers\IngameScripts\local\CommandLineActions\obj\x64\Debug\CommandLineActions.csproj.CoreCompileInputs.cache
