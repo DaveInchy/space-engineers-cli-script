@@ -9,7 +9,7 @@
     <MDKUseGameBinPath>no</MDKUseGameBinPath>
     <MDKGameBinPath>B:\SteamLibrary\SteamApps\common\SpaceEngineers\Bin64</MDKGameBinPath>
     <MDKInstallPath>c:\users\dave\appdata\local\microsoft\visualstudio\16.0_5fbd5c29\extensions\qv4u0t5m.wma</MDKInstallPath>
-    <MDKOutputPath>C:\Users\dave\AppData\Roaming\SpaceEngineers\IngameScripts\local</MDKOutputPath>
+    <MDKOutputPath>C:\Users\dave\AppData\Roaming\SpaceEngineers\IngameScripts\local\CommandLineActions\</MDKOutputPath>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System.Collections.Immutable">

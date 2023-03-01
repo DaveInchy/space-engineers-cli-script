@@ -1,0 +1,20 @@
+{
+  "version": "0.2.1",
+  "tasks": [
+    {
+      "taskLabel": "CLA Script",
+      "appliesTo": "src\CommandLineActions.cs",
+      "type": "msbuild"
+    },
+    {
+      "taskLabel": "CLA Project",
+      "appliesTo": "CommandLineActions.csproj",
+      "type": "msbuild"
+    },
+    {
+      "taskLabel": "CLA Solution",
+      "appliesTo": "CommandLineActions.sln",
+      "type": "msbuild"
+    }
+  ]
+}

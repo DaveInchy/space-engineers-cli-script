@@ -12,7 +12,10 @@
       <Level>Full</Level>
     </MDKMinify>
     <MDKIgnore>
-      <Folder>mdk</Folder>
-    </MDKIgnore>
+		<Folder>mdk</Folder>
+		<Folder>obj</Folder>
+		<Folder>properties</Folder>
+		<Folder>bin</Folder>
+	</MDKIgnore>
   </PropertyGroup>
 </Project>

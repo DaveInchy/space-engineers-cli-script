@@ -1,24 +1,27 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.Immutable;
 using System.Linq;
-using System.Text;
-using Sandbox.Game.EntityComponents;
 using Sandbox.ModAPI.Ingame;
 using Sandbox.ModAPI.Interfaces;
 using SpaceEngineers.Game.ModAPI.Ingame;
-using VRage;
-using VRage.Collections;
-using VRage.Game;
-using VRage.Game.Components;
 using VRage.Game.GUI.TextPanel;
-using VRage.Game.ModAPI.Ingame;
 using VRage.Game.ModAPI.Ingame.Utilities;
-using VRage.Game.ObjectBuilders.Definitions;
 using VRageMath;
 
-namespace CommandLineActions
+/* Name: CommandLineActions
+ * Version: 1.0.0
+ * Author: Dave <github.com/daveinchy>
+ * Description: CommandLineActions is a "PB" Script for Space Engineers (Game) embedded C# implementation
+ * Changelog:
+ * |
+ * | 🚀 Release 1.0.0
+ * | 1. lcd toggle for positive and negative displays.
+ * | 2. lcd show command that currently only shows SDI. Ads.
+ * | 3. prepared codebase for expansion, cli logic finishes.
+ * |
+ */
+
+namespace IngameScript
 {
 
     partial class Program : MyGridProgram
@@ -220,7 +223,11 @@ namespace CommandLineActions
 
         private IMyTextPanel LcdShow(IMyTextPanel panel)
         {
-            UnicodeImage Image = new UnicodeImage(panel);
+            int index = Int16.Parse(args[3]);
+            if (index >= 0)
+            {
+                UnicodeImage Image = new UnicodeImage(panel, index);
+            }
             
             return panel;
         }
