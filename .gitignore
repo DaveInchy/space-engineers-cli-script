@@ -1,6 +1,9 @@
-﻿/script.cs
-/CommandLineActions/**/*
-/CommandLineActions
-/bin
-/obj
-/.git
+﻿script.cs
+CommandLineActions/**/*
+CommandLineActions/
+bin/**/*
+bin/
+obj/**/*
+obj/
+.git/**/*
+.git/
