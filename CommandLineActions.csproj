@@ -50,8 +50,11 @@
   <Import Project="MDK/MDK.paths.props" Condition="exists('MDK/MDK.paths.props')" />
   <ItemGroup>
     <Compile Include="MDK\Bootstrapper.cs" />
-    <Compile Include="src\UnicodeImage.cs" />
-    <Compile Include="src\CommandLineActions.cs" />
+    <Compile Include="src\Utils\GridBlocks.cs" />
+    <Compile Include="src\Commands\Help.cs" />
+    <Compile Include="src\Program.cs" />
+    <Compile Include="src\Commands\TextPanel.cs" />
+    <Compile Include="src\Core.cs" />
     <AdditionalFiles Include="MDK\MDK.options.props">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </AdditionalFiles>
@@ -77,6 +80,7 @@
   <ItemGroup>
     <None Include="CommandLineActions.ruleset" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="AfterBuild">
     <Copy SourceFiles="MDK\MDK.options.props" DestinationFolder="$(TargetDir)\MDK" />

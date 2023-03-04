@@ -1,5 +1,4 @@
-﻿script.cs
-CommandLineActions/**/*
+﻿CommandLineActions/**/*
 CommandLineActions/
 bin/**/*
 bin/
@@ -7,3 +6,4 @@ obj/**/*
 obj/
 .git/**/*
 .git/
+/thumb2.png.kra

@@ -3,16 +3,16 @@
   <PropertyGroup>
     <MDKVersion>1.4.12</MDKVersion>
     <MDKTrimTypes>
-      <Enabled>no</Enabled>
+      <Enabled>yes</Enabled>
     </MDKTrimTypes>
     <MDKMinify>
       <Level>Full</Level>
     </MDKMinify>
     <MDKIgnore>
-		<Folder>mdk</Folder>
-		<Folder>obj</Folder>
-		<Folder>properties</Folder>
-		<Folder>bin</Folder>
-	</MDKIgnore>
+      <Folder>mdk</Folder>
+      <Folder>obj</Folder>
+      <Folder>properties</Folder>
+      <Folder>bin</Folder>
+    </MDKIgnore>
   </PropertyGroup>
 </Project>
