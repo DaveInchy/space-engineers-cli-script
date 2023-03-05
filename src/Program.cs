@@ -9,18 +9,6 @@ namespace IngameScript
     partial class Program : MyGridProgram
     {
 
-        GridBlocks Blocks;
-
-        const UpdateType CommandUpdate = UpdateType.Trigger | UpdateType.Terminal;
-        const UpdateType BlockUpdate = UpdateType.Update1 | UpdateType.Update10 | UpdateType.Update100 | UpdateType.Trigger;
-
-        int UpdateCounter = 0;
-        int ExecutionCounter = 0;
-
-        MyCommandLine CommandLine = new MyCommandLine();
-        Dictionary<string, Action> Commands = new Dictionary<string, Action>(StringComparer.OrdinalIgnoreCase);
-        List<string> args = new List<string>();
-
         public Program()
         {
             Runtime.UpdateFrequency = UpdateFrequency.Update100;

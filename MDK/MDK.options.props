@@ -14,5 +14,6 @@
       <Folder>properties</Folder>
       <Folder>bin</Folder>
     </MDKIgnore>
+	<ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
   </PropertyGroup>
 </Project>
