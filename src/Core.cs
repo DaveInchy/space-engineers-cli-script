@@ -32,7 +32,7 @@ namespace IngameScript
                 GridTerminalSystem.GetBlocksOfType<IMyTimerBlock>(Blocks.Timers, Timer => Timer != null);
                 GridTerminalSystem.GetBlocksOfType<IMyTextPanel>(Blocks.LCDs, LCD => LCD != null);
             }
-            catch (Exception e)
+            catch (System.Exception e)
             {
                 Echo($"[CommandLineActions]\nError: Caught Exception:\n > {e.ToString()}");
             }

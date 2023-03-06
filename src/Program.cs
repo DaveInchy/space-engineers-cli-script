@@ -81,7 +81,7 @@ namespace IngameScript
                     );
                 }
             }
-            catch (Exception e)
+            catch (System.Exception e)
             {
                 Echo($"[CommandLineActions]\nError: Caught Exception => {e.ToString()}");
             }
