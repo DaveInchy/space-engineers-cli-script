@@ -22,6 +22,8 @@ namespace IngameScript
         Dictionary<string, Action> Commands = new Dictionary<string, Action>(StringComparer.OrdinalIgnoreCase);
         List<string> args = new List<string>();
 
+        string errLog = "";
+
         public void InitGridBlocks(GridBlocks Blocks)
         {
             try
@@ -34,7 +36,9 @@ namespace IngameScript
             }
             catch (System.Exception e)
             {
-                Echo($"[CommandLineActions]\nError: Caught Exception:\n > {e.ToString()}");
+                string msg = $"\nError: Caught Exception:\n > {e.ToString()}";
+                errLog += msg;
+                Echo(msg);
             }
 
             return;

@@ -55,7 +55,9 @@ namespace IngameScript
                     break;
 
                 default:
-                    Echo($"Use '/help lcd' to learn more about this command.");
+                    string msg = $"Use '/help lcd' to learn more about this command.";
+                    errLog += msg;
+                    Echo(msg);
                     break;
             }
             return;
@@ -146,6 +148,9 @@ namespace IngameScript
                         + $"\n{args[3]}"
                         + $"\nUNKNOWN"
                     );
+                    string msg = "\nError: Unknown ARG[3] ERROR";
+                    errLog += msg;
+                    Echo(msg);
                     break;
             }
 

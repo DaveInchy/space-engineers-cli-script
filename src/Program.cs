@@ -19,10 +19,11 @@ namespace IngameScript
 
         public void Save()
         {
-            string msg = "Saving is not Implemented";
+            string msg = "\nError: Saving is not Implemented";
+            errLog += msg;
 
             Echo(msg);
-            throw new Exception(msg);
+            // throw new Exception(msg);
         }
 
         public void Main(string argument, UpdateType updateSource)
@@ -51,7 +52,9 @@ namespace IngameScript
 
                         if (initiator == null)
                         {
-                            Echo("[CommandLineActions]\nError: No command specified");
+                            string msg = "\nError: No command specified";
+                            errLog += msg;
+                            Echo(msg);
                         }
                         else if (Commands.TryGetValue(initiator, out init))
                         {
@@ -60,14 +63,16 @@ namespace IngameScript
                         }
                         else
                         {
-                            Echo($"[CommandLineActions]\nError: Unknown command {initiator}");
+                            string msg = $"\nError: Unknown command {initiator}";
+                            errLog += msg;
+                            Echo(msg);
                         }
                     }
                 }
                 else if ((updateSource & BlockUpdate) != 0)
                 {
                     string cmd = "";
-                    for (int n=0; n <= args.Count(); n++)
+                    for (int n=0; n < args.Count(); n++)
                     {
                         cmd += $"{args[n]} ";
                     }
@@ -78,12 +83,15 @@ namespace IngameScript
                         + $"\nExecuted Commands {ExecutionCounter.ToString()} times"
                         + $"\nRecent Command:\n\t=> {cmd}"
                         + $"\nAmount Args: {args.Count()}"
+                        + $"\nERROR LOG:\n\r{errLog}"
                     );
                 }
             }
             catch (System.Exception e)
             {
-                Echo($"[CommandLineActions]\nError: Caught Exception => {e.ToString()}");
+                string msg = $"\nError: Caught Exception => {e.ToString()}";
+                errLog += msg;
+                Echo(msg);
             }
 
             UpdateCounter++;
