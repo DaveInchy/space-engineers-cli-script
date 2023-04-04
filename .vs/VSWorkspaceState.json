@@ -1,12 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\EasyAPI",
-    "\\EasyAPI\\modules",
-    "\\EasyAPI\\modules\\BootstrapEasyAPI",
-    "\\EasyAPI\\modules\\BootstrapMain",
-    "\\src"
+    ""
   ],
-  "SelectedNode": "\\src\\Program.cs",
+  "SelectedNode": "\\CommandLineActions.sln",
   "PreviewInSolutionExplorer": false
 }

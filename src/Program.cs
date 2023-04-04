@@ -12,9 +12,8 @@ namespace IngameScript
         public Program()
         {
             Runtime.UpdateFrequency = UpdateFrequency.Update100;
-
-            Blocks = new GridBlocks();
-            this.InitGridBlocks(Blocks);
+            this.Blocks = new GridBlocks(GridTerminalSystem as IMyGridTerminalSystem);
+            this.InitGridBlocks(this.Blocks);
         }
 
         public void Save()
@@ -70,7 +69,7 @@ namespace IngameScript
                     }
                 }
                 else if ((updateSource & BlockUpdate) != 0)
-                {
+                { 
                     string cmd = "";
                     for (int n=0; n < args.Count(); n++)
                     {
@@ -80,12 +79,24 @@ namespace IngameScript
                           $"[CommandLineActions] Statistics:"
                         + $"\nUpdated {UpdateCounter.ToString()} times"
                         + $"\n----------------------"
-                        + $"\nExecuted Commands {ExecutionCounter.ToString()} times"
-                        + $"\nRecent Command:\n\t=> {cmd}"
-                        + $"\nAmount Args: {args.Count()}"
-                        + $"\nERROR LOG:\n\r{errLog}"
+                        + $"\nExecuted Command {ExecutionCounter.ToString()} times"
+                        + $"\nNum. Arguments: {args.Count()}"
+                        + $"\nLast Command: \n\t{cmd}"
+                        + $"\n\nLOG:\n[CommandLineActions]{errLog}"
                     );
                 }
+
+                List<Controller<Object, Action>> controllers = this.Controllers;
+
+                // Handle Controllers
+
+                this.Controllers = controllers;
+
+                for (int n = 0; n < controllers.ToArray().Length; n++)
+                {
+                    controllers.ToArray()[n].execute();
+                }
+
             }
             catch (System.Exception e)
             {

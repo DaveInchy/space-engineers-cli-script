@@ -16,3 +16,8 @@
   2. lcd show command that currently only shows SDI. Ads.
   3. prepared codebase for expansion, cli logic finishes.
  
+# Todo:
+  1. Make some kind of event provider that can be listened to for grid events.
+     as an example: door open/close -ing. => Autoclosing
+  2. Auto closing doors, make it Oxygen Chamber proof.
+  3. Actions (Activating events that are already exist.) to execute like what is already demonstrated with LCD's 

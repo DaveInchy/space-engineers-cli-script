@@ -12,7 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFrameworkProfile />
-	  <OutputPath>.\</OutputPath>
+    <OutputPath>.\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
@@ -54,11 +54,13 @@
   <Import Project="MDK/MDK.paths.props" Condition="exists('MDK/MDK.paths.props')" />
   <ItemGroup>
     <Compile Include="MDK\Bootstrapper.cs" />
+    <Compile Include="src\Controllers\Doors.cs" />
+    <Compile Include="src\Controller.cs" />
     <Compile Include="src\Utils\GridBlocks.cs" />
-	<Compile Include="src\Commands\TextPanel.cs" />
+    <Compile Include="src\Commands\TextPanel.cs" />
     <Compile Include="src\Commands\Help.cs" />
     <Compile Include="src\Core.cs" />
-	<Compile Include="src\Program.cs" />
+    <Compile Include="src\Program.cs" />
     <AdditionalFiles Include="MDK\MDK.options.props">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </AdditionalFiles>

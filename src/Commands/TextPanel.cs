@@ -73,22 +73,45 @@ namespace IngameScript
             panel.Alignment = TextAlignment.CENTER;
             panel.ContentType = ContentType.TEXT_AND_IMAGE;
 
-            if (panel.GetText().Substring(6) == negative)
+            if (panel == null)
             {
-                panel.BackgroundColor = new Color(0, 255, 0);
-                panel.WriteText(
-                    "✓ ✓ ✓"
-                    + $"\n{positive}"
-                );
-            }
-            else
+
+                string msg = "\nPanel computes to null within this grid";
+                Echo(msg);
+                errLog += msg;
+                return panel;
+
+            } else
             {
-                panel.BackgroundColor = new Color(225, 0, 0);
-                panel.WriteText(
-                    "X X X"
-                    + $"\n{negative}"
-                );
+
+                string subString = "";
+                int strLength = panel.GetText().ToCharArray().Length;
+
+                if (strLength >= 0)
+                {
+                    subString = panel.GetText().Substring(6);
+                }
+
+                if (negative.Equals(subString))
+                {
+                    panel.BackgroundColor = new Color(0, 255, 0);
+                    panel.WriteText(
+                        "✓ ✓ ✓"
+                        + $"\n{positive}"
+                    );
+                }
+                else
+                {
+                    panel.BackgroundColor = new Color(225, 0, 0);
+                    panel.WriteText(
+                        "X X X"
+                        + $"\n{negative}"
+                    );
+                }
+
             }
+
+            
 
             return panel;
         }

@@ -11,6 +11,7 @@ namespace IngameScript
     {
 
         GridBlocks Blocks;
+        List<Controller<Object, Action>> Controllers = new List<Controller<Object, Action>>();
 
         const UpdateType CommandUpdate = UpdateType.Trigger | UpdateType.Terminal;
         const UpdateType BlockUpdate = UpdateType.Update1 | UpdateType.Update10 | UpdateType.Update100 | UpdateType.Trigger;
@@ -22,17 +23,17 @@ namespace IngameScript
         Dictionary<string, Action> Commands = new Dictionary<string, Action>(StringComparer.OrdinalIgnoreCase);
         List<string> args = new List<string>();
 
-        string errLog = "";
+        public string errLog = "";
 
         public void InitGridBlocks(GridBlocks Blocks)
         {
             try
             {
-                GridTerminalSystem.GetBlocksOfType<IMyLightingBlock>(Blocks.Lights, Light => Light != null);
-                GridTerminalSystem.GetBlocksOfType<IMyButtonPanel>(Blocks.Buttons, Button => Button != null);
-                GridTerminalSystem.GetBlocksOfType<IMySensorBlock>(Blocks.Sensors, Sensor => Sensor != null);
-                GridTerminalSystem.GetBlocksOfType<IMyTimerBlock>(Blocks.Timers, Timer => Timer != null);
-                GridTerminalSystem.GetBlocksOfType<IMyTextPanel>(Blocks.LCDs, LCD => LCD != null);
+                var Door = new DoorController(Blocks);
+
+                var ControllerClass = new DoorController(this.Blocks);
+                var DoorController = new Controller<Object, Action>(ControllerClass, ControllerClass.execute);
+                this.Controllers.Add(DoorController);
             }
             catch (System.Exception e)
             {
