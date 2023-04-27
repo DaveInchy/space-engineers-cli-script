@@ -9,26 +9,44 @@ namespace IngameScript
     partial class Program : MyGridProgram
     {
 
+        Scheduler Task;
+        Scheduler Task2;
+
         public Program()
         {
-            Runtime.UpdateFrequency = UpdateFrequency.Update100;
-            this.Blocks = new GridBlocks(GridTerminalSystem as IMyGridTerminalSystem);
-            this.InitGridBlocks(this.Blocks);
+            Runtime.UpdateFrequency = UpdateFrequency.Update10;
+
+            try
+            {
+                this.Blocks = new Grid(GridTerminalSystem as IMyGridTerminalSystem);
+
+                DoorController Doors = new DoorController(this.Blocks);
+                LightController Lights = new LightController(this.Blocks);
+
+                Task = new Scheduler(this, Lights.Sequence(), true);
+                Task2 = new Scheduler(this, Doors.Sequence(), true);
+
+                this.Controllers.Add(new Controller<Object>(controller: Doors, execute: Task2.Run));
+                this.Controllers.Add(new Controller<Object>(controller: Lights, execute: Task.Run));
+            }
+            catch (System.Exception e)
+            {
+                string msg = $"\nError: Caught Exception:\n > {e.ToString()}";
+                logError(msg);
+            }
         }
 
         public void Save()
         {
             string msg = "\nError: Saving is not Implemented";
-            errLog += msg;
-
-            Echo(msg);
-            // throw new Exception(msg);
+            logError(msg);
         }
 
         public void Main(string argument, UpdateType updateSource)
         {
             try
             {
+
                 // Check what kinda execution is ran.
                 if ((updateSource & CommandUpdate) != 0)
                 {
@@ -52,8 +70,7 @@ namespace IngameScript
                         if (initiator == null)
                         {
                             string msg = "\nError: No command specified";
-                            errLog += msg;
-                            Echo(msg);
+                            logError(msg);
                         }
                         else if (Commands.TryGetValue(initiator, out init))
                         {
@@ -63,8 +80,7 @@ namespace IngameScript
                         else
                         {
                             string msg = $"\nError: Unknown command {initiator}";
-                            errLog += msg;
-                            Echo(msg);
+                            logError(msg);
                         }
                     }
                 }
@@ -75,36 +91,41 @@ namespace IngameScript
                     {
                         cmd += $"{args[n]} ";
                     }
+                    var compute = (Runtime.CurrentInstructionCount / Runtime.MaxInstructionCount) * 100;
                     Echo(
                           $"[CommandLineActions] Statistics:"
-                        + $"\nUpdated {UpdateCounter.ToString()} times"
+                        + $"\nITER :: {UpdateCounter.ToString()}x"
+                        + $"\nLOAD :: {compute}%"
                         + $"\n----------------------"
-                        + $"\nExecuted Command {ExecutionCounter.ToString()} times"
-                        + $"\nNum. Arguments: {args.Count()}"
-                        + $"\nLast Command: \n\t{cmd}"
-                        + $"\n\nLOG:\n[CommandLineActions]{errLog}"
+                        + $"\nNUM COMMANDS :: {ExecutionCounter.ToString()}x"
+                        + $"\nCOMMAND ARGS :: {args.Count()}x"
+                        + $"\nLAST COMMAND :: '{cmd}'"
+                        + $"\n\nLOG:\n[CommandLineActions]\t{errLog}"
                     );
                 }
 
-                List<Controller<Object, Action>> controllers = this.Controllers;
+                List<Controller<Object>> controllers = this.Controllers;
 
-                // Handle Controllers
-
-                this.Controllers = controllers;
+                // ----------- Manipulate Controller Metadata ----------- //
 
                 for (int n = 0; n < controllers.ToArray().Length; n++)
                 {
-                    controllers.ToArray()[n].execute();
+                    // Run
+                    controllers.ToArray()[n].Run();
                 }
+
+                // ----------- Manipulate Controller Metadata ----------- //
+
+                this.Controllers = controllers;
 
             }
             catch (System.Exception e)
             {
                 string msg = $"\nError: Caught Exception => {e.ToString()}";
-                errLog += msg;
-                Echo(msg);
+                logError(msg);
             }
 
+            if (!Task.Running) Task.Start();
             UpdateCounter++;
 
             return;

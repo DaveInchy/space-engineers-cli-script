@@ -4,19 +4,20 @@ namespace IngameScript
 {
     partial class Program
     {
-        public class Controller<T1, T2>
+        public class Controller<T1>
         {
-            private Object obj;
+            private T1 controller;
             private Action exe;
 
-            public Controller(Object controller, Action execute)
+            public Controller(T1 controller, Action execute)
             {
-                this.obj = controller;
+                this.controller = controller;
                 this.exe = execute;
             }
 
-            internal void execute()
+            internal void Run()
             {
+
                 this.exe();
             }
         }

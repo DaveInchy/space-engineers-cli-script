@@ -6,4 +6,5 @@ obj/**/*
 obj/
 .git/**/*
 .git/
-/thumb2.png.kra
+/thumb.bak.png
+/thumb.png.kra

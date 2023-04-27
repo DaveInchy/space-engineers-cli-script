@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <MDKVersion>1.4.12</MDKVersion>
+    <MDKVersion>1.4.13</MDKVersion>
     <MDKUseGameBinPath>no</MDKUseGameBinPath>
     <MDKGameBinPath>B:\SteamLibrary\SteamApps\common\SpaceEngineers\Bin64</MDKGameBinPath>
-    <MDKInstallPath>c:\users\dave\appdata\local\microsoft\visualstudio\16.0_5fbd5c29\extensions\qv4u0t5m.wma</MDKInstallPath>
+    <MDKInstallPath>c:\users\dave\appdata\local\microsoft\visualstudio\16.0_5fbd5c29\extensions\ayw2uurg.3mp</MDKInstallPath>
     <MDKOutputPath>C:\Users\dave\AppData\Roaming\SpaceEngineers\IngameScripts\local</MDKOutputPath>
     <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
   </PropertyGroup>

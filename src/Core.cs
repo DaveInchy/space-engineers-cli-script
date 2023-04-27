@@ -9,9 +9,7 @@ namespace IngameScript
 
     partial class Program
     {
-
-        GridBlocks Blocks;
-        List<Controller<Object, Action>> Controllers = new List<Controller<Object, Action>>();
+        Grid Blocks;
 
         const UpdateType CommandUpdate = UpdateType.Trigger | UpdateType.Terminal;
         const UpdateType BlockUpdate = UpdateType.Update1 | UpdateType.Update10 | UpdateType.Update100 | UpdateType.Trigger;
@@ -19,31 +17,14 @@ namespace IngameScript
         int UpdateCounter = 0;
         int ExecutionCounter = 0;
 
+        List<Controller<Object>> Controllers = new List<Controller<Object>>();
         MyCommandLine CommandLine = new MyCommandLine();
         Dictionary<string, Action> Commands = new Dictionary<string, Action>(StringComparer.OrdinalIgnoreCase);
         List<string> args = new List<string>();
 
         public string errLog = "";
 
-        public void InitGridBlocks(GridBlocks Blocks)
-        {
-            try
-            {
-                var Door = new DoorController(Blocks);
+        public static Random Rand = new Random();
 
-                var ControllerClass = new DoorController(this.Blocks);
-                var DoorController = new Controller<Object, Action>(ControllerClass, ControllerClass.execute);
-                this.Controllers.Add(DoorController);
-            }
-            catch (System.Exception e)
-            {
-                string msg = $"\nError: Caught Exception:\n > {e.ToString()}";
-                errLog += msg;
-                Echo(msg);
-            }
-
-            return;
-        }
-        
     }
 }

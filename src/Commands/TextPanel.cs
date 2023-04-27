@@ -122,7 +122,7 @@ namespace IngameScript
 
             panel.SetValue<long>("Font", 1147350002);
 
-            panel.FontSize = 3F;
+            panel.FontSize = (float)2.2;
             panel.TextPadding = 25;
 
             panel.Alignment = TextAlignment.CENTER;
