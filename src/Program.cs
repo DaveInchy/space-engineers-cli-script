@@ -2,15 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using VRage.Game.ModAPI.Ingame.Utilities;
 
 namespace IngameScript
 {
     partial class Program : MyGridProgram
     {
 
-        Scheduler Task;
-        Scheduler Task2;
+        List<Scheduler> Task = new List<Scheduler>();
 
         public Program()
         {
@@ -20,18 +18,19 @@ namespace IngameScript
             {
                 this.Blocks = new Grid(GridTerminalSystem as IMyGridTerminalSystem);
 
-                DoorController Doors = new DoorController(this.Blocks);
+                var id = 0;
                 LightController Lights = new LightController(this.Blocks);
+                Task.Insert(id, new Scheduler(this, Lights.Sequence(), true));
+                this.Controllers.Add(new Controller<Object>(controller: Lights, execute: Task.ToArray()[id].Run));
 
-                Task = new Scheduler(this, Lights.Sequence(), true);
-                Task2 = new Scheduler(this, Doors.Sequence(), true);
-
-                this.Controllers.Add(new Controller<Object>(controller: Doors, execute: Task2.Run));
-                this.Controllers.Add(new Controller<Object>(controller: Lights, execute: Task.Run));
+                id++;
+                DoorController Doors = new DoorController(this.Blocks);
+                Task.Insert(id, new Scheduler(this, Doors.Sequence(), true));
+                this.Controllers.Add(new Controller<Object>(controller: Doors, execute: Task.ToArray()[id].Run));
             }
             catch (System.Exception e)
             {
-                string msg = $"\nError: Caught Exception:\n > {e.ToString()}";
+                string msg = $"\nError: Caught Exception:\n > {e}";
                 logError(msg);
             }
         }
@@ -56,7 +55,10 @@ namespace IngameScript
 
                     // Register command execution methods
                     Commands["/help"] = Help;
-                    Commands["/lcd"] = TextPanel;
+                    Commands["/lcd"] = LCDState;
+                    Commands["/door"] = DoorState;
+                    Commands["/light"] = LightState;
+                    Commands["/block"] = BlockState;
 
                     if (CommandLine.TryParse(argument))
                     {
@@ -85,22 +87,25 @@ namespace IngameScript
                     }
                 }
                 else if ((updateSource & BlockUpdate) != 0)
-                { 
+                {
                     string cmd = "";
-                    for (int n=0; n < args.Count(); n++)
+                    for (int n = 0; n < args.Count(); n++)
                     {
                         cmd += $"{args[n]} ";
                     }
                     var compute = (Runtime.CurrentInstructionCount / Runtime.MaxInstructionCount) * 100;
                     Echo(
-                          $"[CommandLineActions] Statistics:"
-                        + $"\nITER :: {UpdateCounter.ToString()}x"
+                          $"--[CommandLineActions]--"
+                        + $"\nA CLI for ScriptKids"
+                        + $"\n\nPERFORMANCE STATS:"
+                        + $"\n----------------------"
+                        + $"\nTICK :: {UpdateCounter}x"
                         + $"\nLOAD :: {compute}%"
                         + $"\n----------------------"
-                        + $"\nNUM COMMANDS :: {ExecutionCounter.ToString()}x"
-                        + $"\nCOMMAND ARGS :: {args.Count()}x"
-                        + $"\nLAST COMMAND :: '{cmd}'"
-                        + $"\n\nLOG:\n[CommandLineActions]\t{errLog}"
+                        + $"\nCOMMAND LINE ARG :: {cmd}"
+                        + $"\nCOMMAND ARGS NUM :: {args.Count()}x"
+                        + $"\nCOMMAND EXEC NUM :: {ExecutionCounter}x"
+                        + $"\n\nLOG:\n\t{errLog}"
                     );
                 }
 
@@ -121,11 +126,15 @@ namespace IngameScript
             }
             catch (System.Exception e)
             {
-                string msg = $"\nError: Caught Exception => {e.ToString()}";
+                string msg = $"\nError: Caught Exception => {e}";
                 logError(msg);
             }
 
-            if (!Task.Running) Task.Start();
+            foreach (Scheduler task in Task)
+            {
+                if (!task.Running) task.Start();
+            }
+
             UpdateCounter++;
 
             return;

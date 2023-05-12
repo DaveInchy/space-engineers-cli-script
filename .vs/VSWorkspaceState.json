@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\MDK"
   ],
-  "SelectedNode": "\\CommandLineActions.sln",
+  "SelectedNode": "\\script.cs",
   "PreviewInSolutionExplorer": false
 }

@@ -1,24 +1,4 @@
-﻿using Sandbox.Game.EntityComponents;
-using Sandbox.ModAPI.Ingame;
-using Sandbox.ModAPI.Interfaces;
-using SpaceEngineers.Game.ModAPI.Ingame;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.Immutable;
-using System.Linq;
-using System.Text;
-using VRage;
-using VRage.Collections;
-using VRage.Game;
-using VRage.Game.Components;
-using VRage.Game.GUI.TextPanel;
-using VRage.Game.ModAPI.Ingame;
-using VRage.Game.ModAPI.Ingame.Utilities;
-using VRage.Game.ObjectBuilders.Definitions;
-using VRageMath;
-
-namespace IngameScript
+﻿namespace IngameScript
 {
     partial class Program
     {
@@ -26,14 +6,16 @@ namespace IngameScript
         {
             Echo($"[CommandLineActions] use '/help [<SubCommand>]'."
                 + $"\n"
-                + $"\nSubCommand's:"
+                + $"\n(sub)Command's:"
                 + $"\n----------------------"
-                + $"\n/help => Get help for each command or in general."
-                + $"\n/lcd => Change LCD profile's, Using pre-programmed sprites and text / info."
-                + $"\n/light => Change Light profile's, Using pre-programmed states."
+                + $"\n/help		\t=> Get help for each command or in general."
+                + $"\n/lcd		\t\t=> Change LCD State's, Using pre-programmed sprites and text / info."
+                + $"\n/light	\t=> Change Light State's, Using pre-programmed states."
+                + $"\n/door		\t\t=> Change Door State's, Basically ON or OFF."
+                + $"\n/block	\t=> Makes every other command useless or redundant / depricated"
                 + $"\n----------------------"
-                + $"\n"
-                + $"\nPage: 1 of 1 | use '/help [<Index>]'"
+                + $"\nDon't bother me about my creations please. im happy with thankyou's"
+                + $"\n\nPage: 1 of 1 | use '/help [<Index>]'"
             );
         }
     }

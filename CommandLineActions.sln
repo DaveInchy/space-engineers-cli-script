@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.33214.272
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandLineActions", "CommandLineActions.csproj", "{133C9D5F-AF67-4F39-A8A1-DB41DD740D73}"
 EndProject
@@ -11,8 +11,8 @@ Global
 		Normal|x64 = Normal|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{133C9D5F-AF67-4F39-A8A1-DB41DD740D73}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{133C9D5F-AF67-4F39-A8A1-DB41DD740D73}.Normal|x64.ActiveCfg = Debug|Any CPU
+		{133C9D5F-AF67-4F39-A8A1-DB41DD740D73}.Debug|x64.ActiveCfg = Normal|x64
+		{133C9D5F-AF67-4F39-A8A1-DB41DD740D73}.Normal|x64.ActiveCfg = Debug|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

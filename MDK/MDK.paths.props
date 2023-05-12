@@ -4,7 +4,7 @@
     <MDKVersion>1.4.13</MDKVersion>
     <MDKUseGameBinPath>no</MDKUseGameBinPath>
     <MDKGameBinPath>B:\SteamLibrary\SteamApps\common\SpaceEngineers\Bin64</MDKGameBinPath>
-    <MDKInstallPath>c:\users\dave\appdata\local\microsoft\visualstudio\16.0_5fbd5c29\extensions\ayw2uurg.3mp</MDKInstallPath>
+    <MDKInstallPath>c:\users\dave\appdata\local\microsoft\visualstudio\17.0_bcc53989\Extensions\p11nt4wa.hkm</MDKInstallPath>
     <MDKOutputPath>C:\Users\dave\AppData\Roaming\SpaceEngineers\IngameScripts\local</MDKOutputPath>
     <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
   </PropertyGroup>

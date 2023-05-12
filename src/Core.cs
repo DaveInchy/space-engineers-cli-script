@@ -1,7 +1,6 @@
-﻿using System;
+﻿using Sandbox.ModAPI.Ingame;
+using System;
 using System.Collections.Generic;
-using Sandbox.ModAPI.Ingame;
-using SpaceEngineers.Game.ModAPI.Ingame;
 using VRage.Game.ModAPI.Ingame.Utilities;
 
 namespace IngameScript
@@ -19,7 +18,7 @@ namespace IngameScript
 
         List<Controller<Object>> Controllers = new List<Controller<Object>>();
         MyCommandLine CommandLine = new MyCommandLine();
-        Dictionary<string, Action> Commands = new Dictionary<string, Action>(StringComparer.OrdinalIgnoreCase);
+        Dictionary<string, Action> Commands = new Dictionary<string, Action>(StringComparer.OrdinalIgnoreCase); // this can be used as a normal array fyi
         List<string> args = new List<string>();
 
         public string errLog = "";
